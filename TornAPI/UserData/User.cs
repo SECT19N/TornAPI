@@ -52,7 +52,7 @@ public class User {
 	public string Name { get; set; }
 
 	[JsonProperty("revivable")]
-	public Revivable Revivable { get; set; }
+	public bool Revivable { get; set; }
 
 	[JsonProperty("profile_image")]
 	public string ProfileImage { get; set; }
