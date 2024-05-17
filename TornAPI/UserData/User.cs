@@ -66,6 +66,48 @@ public class User {
 	[JsonProperty("faction")]
 	public Faction Faction { get; set; }
 
+	[JsonProperty("graffiti")]
+	public decimal Graffiti { get; set; }
+
+	[JsonProperty("shoplifting")]
+	public decimal Shoplifting { get; set; }
+
+	[JsonProperty("cracking")]
+	public decimal Cracking { get; set; }
+
+	[JsonProperty("search_for_cash")]
+	public decimal SearchForCash { get; set; }
+
+	[JsonProperty("hunting")]
+	public decimal Hunting { get; set; }
+
+    [JsonProperty("bootlegging")]
+    public decimal Bootlegging { get; set; }
+
+	[JsonProperty("reviving")]
+	public decimal Reviving { get; set; }
+
+	[JsonProperty("burglary")]
+	public decimal Burglary { get; set; }
+
+	[JsonProperty("disposal")]
+	public decimal Disposal { get; set; }
+
+    [JsonProperty("card_skimming")]
+    public decimal CardSkimming { get; set; }
+
+	[JsonProperty("hustling")]
+	public decimal Hustling { get; set; }
+
+	[JsonProperty("racing")]
+	public decimal Racing { get; set; }
+
+	[JsonProperty("pickpocket")]
+	public decimal Pickpocket { get; set; }
+
+	[JsonProperty("forgery")]
+	public decimal Forgery { get; set; }
+
     [JsonProperty("married")]
     public Marriage Marriage { get; set; }
 
