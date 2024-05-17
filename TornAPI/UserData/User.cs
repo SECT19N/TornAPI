@@ -33,6 +33,33 @@ public class User {
     [JsonProperty("forum_posts")]
     public int ForumPosts { get; set; }
 
+    [JsonProperty("karma")]
+    public int Karma { get; set; }
+
+	[JsonProperty("age")]
+	public int Age { get; set; }
+
+	[JsonProperty("role")]
+	public string Role { get; set; }
+
+	[JsonProperty("donator")]
+	public bool Donator { get; set; }
+
+	[JsonProperty("player_id")]
+	public int PlayerId { get; set; }
+
+	[JsonProperty("name")]
+	public string Name { get; set; }
+
+	[JsonProperty("revivable")]
+	public Revivable Revivable { get; set; }
+
+	[JsonProperty("profile_image")]
+	public string ProfileImage { get; set; }
+
+    [JsonProperty("status")]
+    public Status Status { get; set; }
+
     [JsonProperty("server_time")]
 	public int ServerTime { get; set; }
 
