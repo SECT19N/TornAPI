@@ -60,6 +60,21 @@ public class User {
     [JsonProperty("status")]
     public Status Status { get; set; }
 
+	[JsonProperty("job")]
+	public Job Job { get; set; }
+
+	[JsonProperty("faction")]
+	public Faction Faction { get; set; }
+
+    [JsonProperty("married")]
+    public Marriage Marriage { get; set; }
+
+	[JsonProperty("states")]
+	public States States { get; set; }
+
+    [JsonProperty("last_action")]
+    public LastAction LastAction { get; set; }
+
     [JsonProperty("server_time")]
 	public int ServerTime { get; set; }
 
