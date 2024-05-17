@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using TornAPI.UserData;
+using TornAPI.Utils;
 
 namespace TornAPI;
 
@@ -9,7 +10,7 @@ public class Client {
 	public DateTime LastCall { get; set; } = DateTime.Now;
 
 	public Client() {
-	
+
 	}
 
 	public Client(string key) {
@@ -26,7 +27,7 @@ public class Client {
 
 		try {
 			using (HttpClient httpClient = new()) {
-				HttpResponseMessage response = await httpClient.GetAsync($@"https://api.torn.com/user/?selections={string.Join(",", selections)}&key=${ApiKey}");
+				HttpResponseMessage response = await httpClient.GetAsync($@"https://api.torn.com/user/?selections={string.Join(",", selections)}&key={ApiKey}");
 
 				string jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -43,8 +44,8 @@ public class Client {
 				}
 			}
 		} catch (HttpRequestException ex) {
-            await Console.Out.WriteLineAsync($"Http Request Exception: {ex.Message}");
-        } catch (JsonException ex) {
+			await Console.Out.WriteLineAsync($"Http Request Exception: {ex.Message}");
+		} catch (JsonException ex) {
 
 		} catch (Exception ex) {
 			await Console.Out.WriteLineAsync($"Exception: {ex.Message}");
@@ -52,17 +53,4 @@ public class Client {
 
 		return user;
 	}
-}
-
-public class ErrorWrapper {
-    [JsonProperty("error")]
-    public ApiError Error { get; set; }
-}
-
-public class ApiError {
-	[JsonProperty("code")]
-    public int Code { get; set; }
-
-	[JsonProperty("error")]
-	public string Message { get; set; }
 }
