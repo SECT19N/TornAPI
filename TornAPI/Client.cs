@@ -62,7 +62,6 @@ public static class UserSelectionsExtensions {
 	public static string ToCommaSeparatedString(this UserSelections selections) {
 		return string.Join(",", Enum.GetValues(typeof(UserSelections))
 									.Cast<UserSelections>()
-									.Where(selection => selections.HasFlag(selection))
-									.Select(selection => selection.ToString()));
+									.Where(selection => selections.HasFlag(selection)));
 	}
 }
