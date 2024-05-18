@@ -31,7 +31,7 @@ public enum UserSelections {
 	Notifications = 0x8_0000,
 	Perks = 0x10_0000,
 	PersonalStats = 0x20_0000,
-	profile = 0x40_0000,
+	Profile = 0x40_0000,
 	Properties = 0x80_0000,
 	Refills = 0x100_0000,
 	Reports = 0x200_0000,
