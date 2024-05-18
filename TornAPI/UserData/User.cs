@@ -163,7 +163,7 @@ public class User {
 	public Bar Nerve { get; set; } = new Bar();
 
 	[JsonProperty("chain")]
-	public Bar Chain { get; set; } = new Bar();
+	public Chain Chain { get; set; } = new Chain();
 
 	[JsonProperty("cooldowns")]
 	public Cooldown Cooldowns { get; set; } = new Cooldown();
