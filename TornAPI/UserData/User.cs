@@ -24,7 +24,37 @@ public class User {
     [JsonProperty("awards")]
     public int Awards { get; set; }
 
-    [JsonProperty("friends")]
+    [JsonProperty("points")]
+    public int Points { get; set; }
+
+    [JsonProperty("cayman_bank")]
+    public int CaymanBank { get; set; }
+
+    [JsonProperty("vault_amount")]
+    public int VaultAmount { get; set; }
+
+    [JsonProperty("company_funds")]
+    public int CompanyFunds { get; set; }
+
+    [JsonProperty("daily_networth")]
+    public long DailyNetworth { get; set; }
+
+    [JsonProperty("money_onhand")]
+    public int MoneyOnhand { get; set; }
+
+    [JsonProperty("city_bank")]
+    public CityBank TornBank { get; set; }
+
+    [JsonProperty("manual_labor")]
+    public int ManualLabor { get; set; }
+
+    [JsonProperty("intelligence")]
+    public int Intelligence { get; set; }
+
+    [JsonProperty("endurance")]
+    public int Endurance { get; set; }
+    
+	[JsonProperty("friends")]
     public int Friends { get; set; }
 
     [JsonProperty("enemies")]
@@ -146,6 +176,21 @@ public class User {
 
 	[JsonProperty("defense_modifier")]
 	public int DefenseModifier { get; set; }
+
+	[JsonProperty("strength_info")]
+	public string[] StrengthInfo { get; set; }
+
+	[JsonProperty("defense_info")]
+	public string[] DefenseInfo { get; set; }
+
+	[JsonProperty("speed_info")]
+	public string[] SpeedInfo { get; set; }
+
+	[JsonProperty("dexterity_info")]
+	public string[] DexterityInfo { get; set; }
+
+	[JsonProperty("bazaar")]
+	public string[] Bazaar { get; set; } //TODO - idek what data type it should be.
 
 	[JsonProperty("networth")]
 	public Networth Networth { get; set; }
