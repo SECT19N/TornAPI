@@ -24,7 +24,37 @@ public class User {
     [JsonProperty("awards")]
     public int Awards { get; set; }
 
-    [JsonProperty("friends")]
+    [JsonProperty("points")]
+    public int Points { get; set; }
+
+    [JsonProperty("cayman_bank")]
+    public int CaymanBank { get; set; }
+
+    [JsonProperty("vault_amount")]
+    public int VaultAmount { get; set; }
+
+    [JsonProperty("company_funds")]
+    public int CompanyFunds { get; set; }
+
+    [JsonProperty("daily_networth")]
+    public long DailyNetworth { get; set; }
+
+    [JsonProperty("money_onhand")]
+    public int MoneyOnhand { get; set; }
+
+    [JsonProperty("city_bank")]
+    public CityBank TornBank { get; set; }
+
+    [JsonProperty("manual_labor")]
+    public int ManualLabor { get; set; }
+
+    [JsonProperty("intelligence")]
+    public int Intelligence { get; set; }
+
+    [JsonProperty("endurance")]
+    public int Endurance { get; set; }
+    
+	[JsonProperty("friends")]
     public int Friends { get; set; }
 
     [JsonProperty("enemies")]
@@ -32,6 +62,90 @@ public class User {
 
     [JsonProperty("forum_posts")]
     public int ForumPosts { get; set; }
+
+    [JsonProperty("karma")]
+    public int Karma { get; set; }
+
+	[JsonProperty("age")]
+	public int Age { get; set; }
+
+	[JsonProperty("role")]
+	public string Role { get; set; }
+
+	[JsonProperty("donator")]
+	public bool Donator { get; set; }
+
+	[JsonProperty("player_id")]
+	public int PlayerId { get; set; }
+
+	[JsonProperty("name")]
+	public string Name { get; set; }
+
+	[JsonProperty("revivable")]
+	public bool Revivable { get; set; }
+
+	[JsonProperty("profile_image")]
+	public string ProfileImage { get; set; }
+
+    [JsonProperty("status")]
+    public Status Status { get; set; }
+
+	[JsonProperty("job")]
+	public Job Job { get; set; }
+
+	[JsonProperty("faction")]
+	public Faction Faction { get; set; }
+
+	[JsonProperty("graffiti")]
+	public decimal Graffiti { get; set; }
+
+	[JsonProperty("shoplifting")]
+	public decimal Shoplifting { get; set; }
+
+	[JsonProperty("cracking")]
+	public decimal Cracking { get; set; }
+
+	[JsonProperty("search_for_cash")]
+	public decimal SearchForCash { get; set; }
+
+	[JsonProperty("hunting")]
+	public decimal Hunting { get; set; }
+
+    [JsonProperty("bootlegging")]
+    public decimal Bootlegging { get; set; }
+
+	[JsonProperty("reviving")]
+	public decimal Reviving { get; set; }
+
+	[JsonProperty("burglary")]
+	public decimal Burglary { get; set; }
+
+	[JsonProperty("disposal")]
+	public decimal Disposal { get; set; }
+
+    [JsonProperty("card_skimming")]
+    public decimal CardSkimming { get; set; }
+
+	[JsonProperty("hustling")]
+	public decimal Hustling { get; set; }
+
+	[JsonProperty("racing")]
+	public decimal Racing { get; set; }
+
+	[JsonProperty("pickpocket")]
+	public decimal Pickpocket { get; set; }
+
+	[JsonProperty("forgery")]
+	public decimal Forgery { get; set; }
+
+    [JsonProperty("married")]
+    public Marriage Marriage { get; set; }
+
+	[JsonProperty("states")]
+	public States States { get; set; }
+
+    [JsonProperty("last_action")]
+    public LastAction LastAction { get; set; }
 
     [JsonProperty("server_time")]
 	public int ServerTime { get; set; }
@@ -63,6 +177,21 @@ public class User {
 	[JsonProperty("defense_modifier")]
 	public int DefenseModifier { get; set; }
 
+	[JsonProperty("strength_info")]
+	public string[] StrengthInfo { get; set; }
+
+	[JsonProperty("defense_info")]
+	public string[] DefenseInfo { get; set; }
+
+	[JsonProperty("speed_info")]
+	public string[] SpeedInfo { get; set; }
+
+	[JsonProperty("dexterity_info")]
+	public string[] DexterityInfo { get; set; }
+
+	[JsonProperty("bazaar")]
+	public string[] Bazaar { get; set; } //TODO - idek what data type it should be.
+
 	[JsonProperty("networth")]
 	public Networth Networth { get; set; }
 
@@ -79,7 +208,7 @@ public class User {
 	public Bar Nerve { get; set; } = new Bar();
 
 	[JsonProperty("chain")]
-	public Bar Chain { get; set; } = new Bar();
+	public Chain Chain { get; set; } = new Chain();
 
 	[JsonProperty("cooldowns")]
 	public Cooldown Cooldowns { get; set; } = new Cooldown();
@@ -89,156 +218,4 @@ public class User {
 
 	[JsonProperty("criminalrecord")]
 	public CriminalRecord Crimes { get; set; } = new CriminalRecord();
-}
-
-public class Networth {
-	[JsonProperty("total")]
-	public long Total { get; set; }
-
-	[JsonProperty("pending")]
-	public long Pending { get; set; }
-
-	[JsonProperty("wallet")]
-	public long Wallet { get; set; }
-
-	[JsonProperty("bank")]
-	public long Bank { get; set; }
-
-	[JsonProperty("cayman")]
-	public long Cayman { get; set; }
-
-	[JsonProperty("points")]
-	public long Points { get; set; }
-
-	[JsonProperty("vault")]
-	public long Vault { get; set; }
-
-	[JsonProperty("piggybank")]
-	public long PiggyBank { get; set; }
-
-	[JsonProperty("items")]
-	public long Items { get; set; }
-
-	[JsonProperty("displaycase")]
-	public long DisplayCase { get; set; }
-
-	[JsonProperty("bazaar")]
-	public long Bazaar { get; set; }
-
-	[JsonProperty("trade")]
-	public long Trade { get; set; }
-
-	[JsonProperty("itemmarket")]
-	public long ItemMarket { get; set; }
-
-	[JsonProperty("properties")]
-	public long Properties { get; set; }
-
-	[JsonProperty("stockmarket")]
-	public long StockMarket { get; set; }
-
-	[JsonProperty("auctionhouse")]
-	public long AuctionHouse { get; set; }
-
-	[JsonProperty("company")]
-	public long Company { get; set; }
-
-	[JsonProperty("bookie")]
-	public long Bookie { get; set; }
-
-	[JsonProperty("enlistedcars")]
-	public long EnlistedCars { get; set; }
-
-	[JsonProperty("loan")]
-	public long Loan { get; set; }
-
-	[JsonProperty("unpaidfees")]
-	public long UnpaidFees { get; set; }
-}
-
-public class Travel {
-	[JsonProperty("destination")]
-	public string Destination { get; set; } = "N/A";
-
-	[JsonProperty("method")]
-	public string Method { get; set; } = "N/A";
-
-	[JsonProperty("timestamp")]
-	public int ArrivalTime { get; set; }
-
-	[JsonProperty("departed")]
-	public int Departed { get; set; }
-	[JsonProperty("time_left")]
-	public int TimeLeft { get; set; }
-}
-
-public class Cooldown {
-	[JsonProperty("drug")]
-	public int DrugCooldown { get; set; }
-
-	[JsonProperty("medical")]
-	public int MedicalCooldown { get; set; }
-
-	[JsonProperty("booster")]
-	public int BoosterCooldown { get; set; }
-}
-
-public class CriminalRecord {
-	[JsonProperty("vandalism")]
-	public int Vandalism { get; set; }
-
-	[JsonProperty("theft")]
-	public int Theft { get; set; }
-
-	[JsonProperty("counterfeiting")]
-	public int Counterfeiting { get; set; }
-
-	[JsonProperty("fraud")]
-	public int Fraud { get; set; }
-
-	[JsonProperty("illicitservices")]
-	public int IllicitServices { get; set; }
-
-	[JsonProperty("cybercrime")]
-	public int CyberCrime { get; set; }
-
-	[JsonProperty("extortion")]
-	public int Extortion { get; set; }
-
-	[JsonProperty("illegalproduction")]
-	public int IllegalProduction { get; set; }
-
-	[JsonProperty("total")]
-	public int Total { get; set; }
-}
-
-public class Bar {
-	[JsonProperty("current")]
-	public int Current { get; set; }
-
-	[JsonProperty("maximum")]
-	public int Maximum { get; set; }
-
-	[JsonProperty("increment")]
-	public int Increment { get; set; }
-
-	[JsonProperty("interval")]
-	public int Interval { get; set; }
-
-	[JsonProperty("ticktime")]
-	public int TickTime { get; set; }
-
-	[JsonProperty("fulltime")]
-	public int FullTime { get; set; }
-}
-
-public class WorkStats {
-	[JsonProperty("manual_labor")]
-	public int MAN { get; set; }
-
-	[JsonProperty("intelligence")]
-	public int INT { get; set; }
-
-	[JsonProperty("endurance")]
-	public int END { get; set; }
 }

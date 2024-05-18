@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using TornAPI.Enums;
 using TornAPI.UserData;
 using TornAPI.Utils;
 
@@ -22,12 +23,14 @@ public class Client {
 		CallsPerMinute = calls;
 	}
 
-	public async Task<User> GetUser(string[] selections) {
+	public async Task<User> GetUser(UserSelections selections) {
 		User? user = null;
+
+		string selectionsString = selections.ToCommaSeparatedString();
 
 		try {
 			using (HttpClient httpClient = new()) {
-				HttpResponseMessage response = await httpClient.GetAsync($@"https://api.torn.com/user/?selections={string.Join(",", selections)}&key={ApiKey}");
+				HttpResponseMessage response = await httpClient.GetAsync($@"https://api.torn.com/user/?selections={selectionsString}&key={ApiKey}");
 
 				string jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -52,5 +55,13 @@ public class Client {
 		}
 
 		return user;
+	}
+}
+
+public static class UserSelectionsExtensions {
+	public static string ToCommaSeparatedString(this UserSelections selections) {
+		return string.Join(",", Enum.GetValues(typeof(UserSelections))
+									.Cast<UserSelections>()
+									.Where(selection => selections.HasFlag(selection)));
 	}
 }
