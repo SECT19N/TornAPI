@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
 using TornAPI.Enums;
+using TornAPI.MarketData;
 using TornAPI.UserData;
 using TornAPI.Utils;
 
 namespace TornAPI;
 
 public class Client {
+	string ApiUrl = @"https://api.torn.com/";
+
 	public string ApiKey { get; set; }
 	public int CallsPerMinute { get; set; } = 100;
 	public DateTime LastCall { get; set; } = DateTime.Now;
@@ -30,7 +33,7 @@ public class Client {
 
 		try {
 			using (HttpClient httpClient = new()) {
-				HttpResponseMessage response = await httpClient.GetAsync($@"https://api.torn.com/user/?selections={selectionsString}&key={ApiKey}");
+				HttpResponseMessage response = await httpClient.GetAsync($@"{ApiUrl}user/?selections={selectionsString}&key={ApiKey}");
 
 				string jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -56,12 +59,48 @@ public class Client {
 
 		return user;
 	}
+
+	public async Task<Market> GetMarket(MarketSelections selections, int itemId) {
+		Market? market = null;
+
+		string selectionsString = selections.ToCommaSeparatedString();
+
+		try {
+			using (HttpClient httpClient = new()) {
+				HttpResponseMessage response = await httpClient.GetAsync($@"{ApiUrl}market/{itemId}?selections={selectionsString}&key={ApiKey}");
+
+				string jsonResponse = await response.Content.ReadAsStringAsync();
+
+				if (response.IsSuccessStatusCode) {
+					if (jsonResponse.Contains("\"error\"")) {
+						ErrorWrapper errorWrapper = JsonConvert.DeserializeObject<ErrorWrapper>(jsonResponse);
+						throw new Exception($"{errorWrapper.Error.Code}: {errorWrapper.Error.Message}");
+					} else {
+						market = JsonConvert.DeserializeObject<Market>(jsonResponse);
+					}
+				} else {
+					ErrorWrapper errorWrapper = JsonConvert.DeserializeObject<ErrorWrapper>(jsonResponse);
+					throw new Exception($"{errorWrapper.Error.Code}: {errorWrapper.Error.Message}");
+				}
+			}
+		} catch (Exception ex) {
+			throw new Exception(ex.Message, ex);
+		}
+
+		return market;
+	}
 }
 
 public static class UserSelectionsExtensions {
 	public static string ToCommaSeparatedString(this UserSelections selections) {
 		return string.Join(",", Enum.GetValues(typeof(UserSelections))
 									.Cast<UserSelections>()
+									.Where(selection => selections.HasFlag(selection)));
+	}
+
+	public static string ToCommaSeparatedString(this MarketSelections selections) {
+		return string.Join(",", Enum.GetValues(typeof(MarketSelections))
+									.Cast<MarketSelections>()
 									.Where(selection => selections.HasFlag(selection)));
 	}
 }
