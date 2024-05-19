@@ -4,8 +4,8 @@ namespace TornAPI.MarketData;
 
 public class Market {
 	[JsonProperty("itemmarket")]
-	public ItemMarket ItemMarket { get; set; }
+	public Item[] MarketItems { get; set; } = [];
 
 	[JsonProperty("bazaar")]
-	public Bazaar ItemBazaar { get; set; }
+	public Item[] BazaarItems { get; set; } = [];
 }
