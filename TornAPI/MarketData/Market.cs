@@ -8,4 +8,7 @@ public class Market {
 
 	[JsonProperty("bazaar")]
 	public Item[] BazaarItems { get; set; } = [];
+
+    [JsonProperty("pointsmarket")]
+    public Dictionary<long, Points> PointsMarket { get; set; } = [];
 }
