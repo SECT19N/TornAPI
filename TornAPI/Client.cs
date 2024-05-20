@@ -7,7 +7,7 @@ using TornAPI.Utils;
 namespace TornAPI;
 
 public class Client {
-	string ApiUrl = @"https://api.torn.com/";
+	readonly string ApiUrl = @"https://api.torn.com/";
 
 	public string ApiKey { get; set; }
 	public int CallsPerMinute { get; set; } = 100;
@@ -26,6 +26,11 @@ public class Client {
 		CallsPerMinute = calls;
 	}
 
+	/// <summary>
+	/// Gets data from Torn API and stores them in an object.
+	/// </summary>
+	/// <param name="selections">Selections of user fields to be requested from Torn API.</param>
+	/// <returns>An object instance of User.</returns>
 	public async Task<User> GetUser(UserSelections selections) {
 		User? user = null;
 
@@ -50,16 +55,22 @@ public class Client {
 				}
 			}
 		} catch (HttpRequestException ex) {
-			await Console.Out.WriteLineAsync($"Http Request Exception: {ex.Message}");
+			throw new HttpRequestException(ex.Message, ex);
 		} catch (JsonException ex) {
-
+			throw new JsonException(ex.Message, ex);
 		} catch (Exception ex) {
-			await Console.Out.WriteLineAsync($"Exception: {ex.Message}");
+			throw new Exception(ex.Message, ex);
 		}
 
 		return user;
 	}
 
+	/// <summary>
+	/// Gets data from Torn API and stores them in an object.
+	/// </summary>
+	/// <param name="selections">Selections of Market fields to be requested from Torn API.</param>
+	/// <param name="itemId">ID of the requested Item.</param>
+	/// <returns>Instance of Market.</returns>
 	public async Task<Market> GetMarket(MarketSelections selections, int itemId) {
 		Market? market = null;
 
@@ -83,6 +94,10 @@ public class Client {
 					throw new Exception($"{errorWrapper.Error.Code}: {errorWrapper.Error.Message}");
 				}
 			}
+		} catch (HttpRequestException ex) {
+			throw new HttpRequestException(ex.Message, ex);
+		} catch (JsonException ex) {
+			throw new JsonException(ex.Message, ex);
 		} catch (Exception ex) {
 			throw new Exception(ex.Message, ex);
 		}
