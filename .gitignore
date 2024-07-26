@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /TornAPIDemo/TornAPIDemo.csproj
 /TornAPIDemo/Program.cs
+/TornTop/TornTop.csproj
