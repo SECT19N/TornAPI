@@ -361,6 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/TornAPIDemo/TornAPIDemo.csproj
-/TornAPIDemo/Program.cs
-/TornTop/TornTop.csproj
+/TornAPIDemo/*
+/TornTop/*
