@@ -31,7 +31,7 @@ public class Client {
 	/// </summary>
 	/// <param name="selections">Selections of user fields to be requested from Torn API.</param>
 	/// <returns>An object instance of User.</returns>
-	public async Task<User> GetUser(UserSelections selections) {
+	public async Task<User> GetUserAsync(UserSelections selections) {
 		User? user = null;
 
 		string selectionsString = selections.ToCommaSeparatedString();
